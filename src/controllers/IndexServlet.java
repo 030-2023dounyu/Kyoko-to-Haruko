@@ -40,6 +40,13 @@ public class IndexServlet extends HttpServlet {
 
         request.setAttribute("mycard", mycard);
 
+     // フラッシュメッセージがセッションスコープにセットされていたら
+        // リクエストスコープに保存する（セッションスコープからは削除）
+        if(request.getSession().getAttribute("flush") != null) {
+            request.setAttribute("flush", request.getSession().getAttribute("flush"));
+            request.getSession().removeAttribute("flush");
+        }
+
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mycard/index.jsp");
         rd.forward(request, response);
     }
