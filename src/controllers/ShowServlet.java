@@ -38,7 +38,7 @@ public class ShowServlet extends HttpServlet {
         em.close();
 
         // メッセージデータをリクエストスコープにセットしてshow.jspを呼び出す
-        request.setAttribute("MyCard", my);
+        request.setAttribute("mycard", my);
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mycard/show.jsp");
         rd.forward(request, response);
