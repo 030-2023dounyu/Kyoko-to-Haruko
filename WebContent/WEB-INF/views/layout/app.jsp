@@ -4,13 +4,12 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
-        <title>単語帳</title>
+        <title>My単語帳</title>
 
         <link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css' />">
         <link rel="stylesheet" href="<c:url value='/css/reset.css' />">
         <link rel="stylesheet" href="<c:url value='/css/style.css' />">
         <link rel="stylesheet" href="<c:url value='/css/index.css' />">
-        <link rel="stylesheet" href="<c:url value='/css/form.css' />">
 
     </head>
     <body>

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-
 <label for="word">単語</label><br />
 <input type="text" name="word" id="word" value="${mycard.word}" />
 <br /><br />
@@ -23,4 +22,6 @@
 <label for="type">みんなの単語に共有する</label><br /><br />
 
 <input type="hidden" name="_token" value="${_token}" />
-<button type="submit">登録</button>
+<div class="text-center">
+  <button type="submit" class="btn btn-primary btn-sm" style="margin-right: 40%;">登録</button>
+</div>
