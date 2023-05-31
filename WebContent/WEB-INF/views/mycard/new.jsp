@@ -21,7 +21,7 @@
                     <form method="POST" action="${pageContext.request.contextPath}/create">
                         <c:import url="_form.jsp" />
                     </form>
-                    <p><a href="${pageContext.request.contextPath}/login">単語一覧に戻る</a></p>
+                    <p><a href="${pageContext.request.contextPath}/index">単語一覧に戻る</a></p>
            </div>
         </div>
     </body>
