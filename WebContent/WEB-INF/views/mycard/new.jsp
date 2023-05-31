@@ -8,10 +8,5 @@
             <c:import url="_form.jsp" />
         </form>
         <p><a href="${pageContext.request.contextPath}/index">自分の単語帳一覧に戻る</a></p>
-
-            </div>
-            <div id="footer">
-                by Haruko & Kyoko.
-            </div>
      </c:param>
 </c:import>
