@@ -22,6 +22,4 @@
 <label for="type">みんなの単語に共有する</label><br /><br />
 
 <input type="hidden" name="_token" value="${_token}" />
-<div class="text-center">
-  <button type="submit" class="btn btn-primary btn-sm" style="margin-right: 40%;">登録</button>
-</div>
+<button type="submit" class="btn btn-primary btn-sm">登録</button>

@@ -1,13 +1,7 @@
 @charset "UTF-8";
 
-.card {
-    top: 50%;
-}
-.card-body{
-    padding-left: 30%;
-}
-a{
-    padding-left: 70%;
+label {
+  font-weight: bold;
 }
 
 /* トグルスイッチ */
@@ -64,10 +58,6 @@ a{
   margin: 0 auto; /* 画面中央からの横方向のマージンを0に設定 */
   float: left; /* 左寄せにするためにfloatを設定 */
   margin-right: 10px; /* オプション: 左側に余白を追加 */
-}
-
-.toggle_button label {
-  font-weight: bold;
 }
 .toggle_button input {
   height: 24px; /* トグルスイッチの高さに合わせて高さを設定 */
