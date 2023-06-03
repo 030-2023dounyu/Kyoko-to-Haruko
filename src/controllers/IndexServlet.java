@@ -14,23 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 import models.MyCard;
 import utils.DBUtil;
 
-/**
- * Servlet implementation class IndexServlet
- */
 @WebServlet("/index")
 public class IndexServlet extends HttpServlet {
-        private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public IndexServlet() {
         super();
     }
 
-        /**
-         * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-         */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
@@ -40,7 +31,7 @@ public class IndexServlet extends HttpServlet {
 
         request.setAttribute("mycard", mycard);
 
-     // フラッシュメッセージがセッションスコープにセットされていたら
+        // フラッシュメッセージがセッションスコープにセットされていたら
         // リクエストスコープに保存する（セッションスコープからは削除）
         if(request.getSession().getAttribute("flush") != null) {
             request.setAttribute("flush", request.getSession().getAttribute("flush"));
