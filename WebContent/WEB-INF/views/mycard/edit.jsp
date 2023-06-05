@@ -4,7 +4,7 @@
     <c:param name="content">
         <c:choose>
             <c:when test="${mycard != null}">
-                <h2>id : ${mycard.id} の単語編集ページ</h2>
+                <h2>登録内容変更</h2>
 
                 <form method="POST" action="${pageContext.request.contextPath}/update">
                     <c:import url="_form.jsp" />

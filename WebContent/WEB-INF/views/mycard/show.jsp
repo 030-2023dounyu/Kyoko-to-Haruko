@@ -4,36 +4,45 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:import url="../layout/app.jsp">
     <c:param name="content">
+        <table class="table">
 
-        <h2>id : ${mycard.id} の単語詳細ページ</h2>
-
-        <table>
-            <tbody>
-                <tr>
-                    <th>単語ジャンル</th>
-                    <td><c:out value="${mycard.type}" /></td>
-                </tr>
-
-                <tr>
-                    <th>単語</th>
-                    <td><c:out value="${mycard.word}" /></td>
-                </tr>
-                <tr>
-                    <th>単語の意味</th>
-                    <td><c:out value="${mycard.mean}" /></td>
-                </tr>
-                <tr>
-                    <th>作成日時</th>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>単語ジャンル</td>
+      <td><c:out value="${mycard.type}" /></td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>単語名</td>
+      <td><c:out value="${mycard.word}" /></td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>意味</td>
+      <td><c:out value="${mycard.mean}" /></td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>理解度</td>
+      <td><c:out value="${mycard.understand}" /></td>
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <td>共有</td>
+      <td><c:out value="${mycard.share}" /></td>
+    </tr>
+    <tr>
+                    <th scope="row">6</th>
+                    <td>作成日</td>
                     <td><fmt:formatDate value="${mycard.created_at}"
-                            pattern="yyyy-MM-dd HH:mm:ss" /></td>
+                            pattern="yyyy-MM-dd" /></td>
                 </tr>
-                <tr>
-                    <th>更新日時</th>
-                    <td><fmt:formatDate value="${mycard.updated_at}"
-                            pattern="yyyy-MM-dd HH:mm:ss" /></td>
-                </tr>
-            </tbody>
-        </table>
+  </tbody>
+</table>
+
+
+
         <p>
             <a href="${pageContext.request.contextPath}/index">一覧に戻る</a>
         </p>
