@@ -28,10 +28,17 @@
                                         <h1 class="card-title"><c:out value="${mycard.word}" /></h1>
                                     </div>
                                     <div class="card_reverse">
-                                        <h2 class="card-title"><c:out value="${mycard.mean}" /></h2>
+                                        <h2 class="card-title fw-lighter"><c:out value="${mycard.mean}" /></h2>
                                     </div>
                                 </div>
                                 <div class="card-index">${s.count}/${cardCount}</div>
+                                <div class="button-group">
+                                    <button class="button ${mycard.understand == '2' ? 'active' : ''}" type="button" name="understand" value="2" onclick="handleButtonClick(this)">&#9675;</button>
+                                    <button class="button ${mycard.understand == '1' ? 'active' : ''}" type="button" name="understand" value="1" onclick="handleButtonClick(this)">&#9651;</button>
+                                    <button class="button ${mycard.understand == '0' ? 'active' : ''}" type="button" name="understand" value="0" onclick="handleButtonClick(this)">&#10005;</button>
+                                </div>
+                                <input type="hidden" name="_token" value="${_token}" />
+<button type="submit" class="btn btn-light">学習終了</button>
                             </div>
                         </c:when>
                         <c:otherwise>
@@ -41,10 +48,15 @@
                                         <h1 class="card-title"><c:out value="${mycard.word}" /></h1>
                                     </div>
                                     <div class="card_reverse">
-                                        <h2 class="card-title"><c:out value="${mycard.mean}" /></h2>
+                                        <h2 class="card-title fw-lighter"><c:out value="${mycard.mean}" /></h2>
                                     </div>
                                 </div>
                                 <div class="card-index">${s.count}/${cardCount}</div>
+                                <div class="button-group">
+                                    <button class="button ${mycard.understand == '2' ? 'active' : ''}" type="button" name="understand" value="2" onclick="handleButtonClick(this)">&#9675;</button>
+                                    <button class="button ${mycard.understand == '1' ? 'active' : ''}" type="button" name="understand" value="1" onclick="handleButtonClick(this)">&#9651;</button>
+                                    <button class="button ${mycard.understand == '0' ? 'active' : ''}" type="button" name="understand" value="0" onclick="handleButtonClick(this)">&#10005;</button>
+                                </div>
                             </div>
                         </c:otherwise>
                     </c:choose>
@@ -60,11 +72,7 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        <div class="button-group">
-    <button class="button circle">&#9675;</button>
-    <button class="button triangle">&#9651;</button>
-    <button class="button cross">&#10005;</button>
-  </div>
+
     </div>
 
     <script>

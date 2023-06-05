@@ -5,46 +5,56 @@
 <c:import url="../layout/app.jsp">
     <c:param name="content">
         <table class="table">
-
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>単語ジャンル</td>
-      <td><c:out value="${mycard.type}" /></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>単語名</td>
-      <td><c:out value="${mycard.word}" /></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>意味</td>
-      <td><c:out value="${mycard.mean}" /></td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>理解度</td>
-      <td><c:out value="${mycard.understand}" /></td>
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td>共有</td>
-      <td><c:out value="${mycard.share}" /></td>
-    </tr>
-    <tr>
-                    <th scope="row">6</th>
+            <tbody>
+                <tr>
+                    <td>単語ジャンル</td>
+                    <td><c:out value="${mycard.type}" /></td>
+                </tr>
+                <tr>
+                    <td>単語名</td>
+                    <td><c:out value="${mycard.word}" /></td>
+                </tr>
+                <tr>
+                    <td>意味</td>
+                    <td><c:out value="${mycard.mean}" /></td>
+                </tr>
+                <tr>
+                    <td>理解度</td>
+                    <c:choose>
+                        <c:when test="${mycard.understand == '0'}">
+                            <td>×</td>
+                        </c:when>
+                        <c:when test="${mycard.understand == '1'}">
+                            <td>△</td>
+                        </c:when>
+                        <c:otherwise>
+                            <td>〇</td>
+                        </c:otherwise>
+                    </c:choose>
+                </tr>
+                <tr>
+                    <td>共有の有無</td>
+                    <c:choose>
+                        <c:when test="${mycard.share == '0'}">
+                            <td>無</td>
+                        </c:when>
+                        <c:otherwise>
+                            <td>有</td>
+                        </c:otherwise>
+                    </c:choose>
+                </tr>
+                <tr>
                     <td>作成日</td>
                     <td><fmt:formatDate value="${mycard.created_at}"
                             pattern="yyyy-MM-dd" /></td>
                 </tr>
-  </tbody>
-</table>
+            </tbody>
+        </table>
 
 
 
         <p>
-            <a href="${pageContext.request.contextPath}/index">一覧に戻る</a>
+            <a href="${pageContext.request.contextPath}/index">My単語一覧に戻る</a>
         </p>
         <p>
             <a href="${pageContext.request.contextPath}/edit?id=${mycard.id}">この単語を編集する</a>

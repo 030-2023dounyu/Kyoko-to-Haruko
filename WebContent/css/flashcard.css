@@ -5,8 +5,8 @@ body{
     background: gray;
 }
 .card {
-    width: 650px;
-  height: 350px;
+    width: 41rem;
+  height: 22rem;
   background: #D3DEF1;
    /* 水平方向の中央揃え */
   margin: 0 auto;
@@ -16,7 +16,7 @@ body{
 }
 .card-title{
     text-align:center;
-  padding:140px 0;
+    padding:140px 0;
 
 }
 .card_reverse {

@@ -7,7 +7,7 @@
                 <c:out value="${flush}"></c:out>
             </div>
         </c:if>
-        <h2>単語一覧</h2>
+        <h2>My単語一覧</h2>
             <details open class="type-element">
                 <summary>IT</summary>
                     <c:forEach var="mycard" items="${mycard}">
