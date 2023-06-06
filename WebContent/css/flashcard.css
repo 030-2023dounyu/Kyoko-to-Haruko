@@ -1,22 +1,17 @@
 @CHARSET "UTF-8";
 
-body{
-    /*background: #F2F2F2;*/
-    background: gray;
-}
 .card {
     width: 41rem;
   height: 22rem;
   background: #D3DEF1;
-   /* 水平方向の中央揃え */
   margin: 0 auto;
-  /* 垂直方向の中央揃え */
   display: flex;
   align-items: center;
 }
 .card-title{
     text-align:center;
-    padding:140px 0;
+    padding-top:150px;
+    max-width: 100%;
 
 }
 .card_reverse {
@@ -72,7 +67,7 @@ body{
     border-radius: 50%;
     font-size: 24px;
     cursor: pointer;
-    margin-right: 60px;
+    margin-right: 58px;
     color: white;
     background-color: gray;
     font-weight: bold;
@@ -84,5 +79,5 @@ body{
 
 .card-index{
     color: whitesmoke;
-    padding-left: 71%;
+    padding-left: 75%;
 }

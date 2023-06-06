@@ -8,8 +8,10 @@
 
         <link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css' />">
         <link rel="stylesheet" href="<c:url value='/css/reset.css' />">
-        <link rel="stylesheet" href="<c:url value='/css/style.css' />">
         <link rel="stylesheet" href="<c:url value='/css/index.css' />">
+        <link rel="stylesheet" href="<c:url value='/css/style.css' />">
+        <link rel="stylesheet" href="<c:url value='/css/flashcard.css' />">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     </head>
     <body>
@@ -30,7 +32,7 @@
                                 <a class="nav-link" href="${pageContext.request.contextPath}/new">新規単語登録</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="${pageContext.request.contextPath}/flashcard">単語帳</a>
+                                <a class="nav-link" href="${pageContext.request.contextPath}/flashHome">単語帳</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="${pageContext.request.contextPath}/testHome">テスト</a>
@@ -48,9 +50,7 @@
             <div id="content">
                 ${param.content}
             </div>
-            <div id="footer">
-                by Haruko & Kyoko.
-            </div>
+
         </div>
         <script src="<c:url value='/js/jquery-3.7.0.slim.min.js' />"></script>
         <script src="<c:url value='/js/bootstrap.bundle.min.js' />"></script>

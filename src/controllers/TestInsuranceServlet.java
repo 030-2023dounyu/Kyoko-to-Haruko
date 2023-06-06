@@ -35,7 +35,7 @@ public class TestInsuranceServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
-        List<MyCard> mycard = em.createNamedQuery("getInsuranceCard", MyCard.class).getResultList();
+        List<MyCard> mycard = em.createNamedQuery("getInsuranceTest", MyCard.class).getResultList();
 
         // リストの要素をランダムに並び替える
         Collections.shuffle(mycard);
