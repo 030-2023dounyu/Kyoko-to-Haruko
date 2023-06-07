@@ -96,5 +96,8 @@
                     </details>
                 </div>
             </div>
+            <div class="text-center">
+            <button onclick="location.href='${pageContext.request.contextPath}/new'" class="btn btn-primary" style="margin-left: 70%;">新規単語登録</button>
+   </div>
     </c:param>
 </c:import>

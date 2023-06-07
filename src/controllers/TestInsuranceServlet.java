@@ -43,14 +43,8 @@ public class TestInsuranceServlet extends HttpServlet {
         request.setAttribute("mycard", mycard);
 
         String randomCard1 = mycard.get(5).getWord();
-        System.out.println("ランダムカード"+randomCard1);
         String randomCard2 = mycard.get(6).getWord();
-        System.out.println("ランダムカード"+randomCard2);
         String randomCard3 = mycard.get(7).getWord();
-
-        System.out.println("ランダムカード"+randomCard1);
-        System.out.println("ランダムカード"+randomCard2);
-        System.out.println("ランダムカード"+randomCard3);
 
         // requestに属性を設定する
         request.setAttribute("randomCard1", randomCard1);
