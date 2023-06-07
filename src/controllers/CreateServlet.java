@@ -2,19 +2,17 @@ package controllers;
 
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import models.MyCard;
 import models.ShareCard;
-import models.validators.FlashcardValidator;
 import utils.DBUtil;
 
 @WebServlet("/create")
@@ -79,38 +77,28 @@ public class CreateServlet extends HttpServlet {
 
                 ShareCard share = new ShareCard();
 
+                HttpSession userInfoSession = request.getSession();
+                String name = (String) userInfoSession.getAttribute("name");
+
                 share.setType(type);
                 share.setWord(word);
 
                 share.setMean(mean);
                 share.setCreated_at(currentTime);
-                share.setName("ログイン情報からとってくるユーザー名");
+                share.setName(name);
+                System.out.println(name);
+
 
                 em.persist(share);
             }
 
+            em.persist(my);
+            em.getTransaction().commit();
+            request.getSession().setAttribute("flush", "登録が完了しました。");
+            em.close();
 
-         // バリデーションを実行してエラーがあったら新規登録のフォームに戻る
-            List<String> errors = FlashcardValidator.validate(my);
-            if(errors.size() > 0) {
-                em.close();
+            response.sendRedirect(request.getContextPath() + "/index");
 
-                // フォームに初期値を設定、さらにエラーメッセージを送る
-                request.setAttribute("_token", request.getSession().getId());
-                request.setAttribute("mycard", my);
-                request.setAttribute("errors", errors);
-
-                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mycard/new.jsp");
-                rd.forward(request, response);
-            } else {
-                // データベースに保存
-                em.persist(my);
-                em.getTransaction().commit();
-                request.getSession().setAttribute("flush", "登録が完了しました。");
-                em.close();
-
-                response.sendRedirect(request.getContextPath() + "/index");
-            }
         }
     }
 

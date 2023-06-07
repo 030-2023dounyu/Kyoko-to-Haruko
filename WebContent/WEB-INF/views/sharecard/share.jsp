@@ -23,7 +23,7 @@
                         <tr>
                             <td><c:out value="${sharecard.word}" /></td>
                             <td><c:out value="${sharecard.mean}" /></td>
-                            <td><c:out value="Kyoko" /></td>
+                            <td><c:out value="${sharecard.name}" /></td>
                             <td><fmt:formatDate value="${sharecard.created_at}"
                                     pattern="yyyy-MM-dd" /></td>
                             <td>追加</td>

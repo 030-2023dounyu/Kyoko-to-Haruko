@@ -2,19 +2,17 @@ package controllers;
 
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import models.MyCard;
 import models.ShareCard;
-import models.validators.FlashcardValidator;
 import utils.DBUtil;
 
 /**
@@ -56,8 +54,8 @@ public class UpdateServlet extends HttpServlet {
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             my.setUpdated_at(currentTime);       // 更新日時のみ上書き
 
-//            Integer understand = 0;
-//            my.setUnderstand(understand);
+            Integer understand = 0;
+            my.setUnderstand(understand);
 
             /*
              * 押されたボタンによって
@@ -75,53 +73,61 @@ public class UpdateServlet extends HttpServlet {
 
 
             Integer shareFlag = 0;
-            my.setShare(shareFlag);
 
             /*
              * 共有ボタンが押されたら
              * ・mycardテーブルのshareを1に変更
              * ・この単語の情報をsharecardテーブルに追加
              */
-            if(request.getParameter("share") != null) {
-                shareFlag = 1;
-                my.setShare(shareFlag);
 
-                ShareCard share = new ShareCard();
+            //もともと共有していない場合
+            if(my.getShare()==0) {
+                //共有ボタンが押されたら
+                if(request.getParameter("share") != null) {
+                    shareFlag = 1;
+                    my.setShare(shareFlag);
 
-                share.setType(type);
-                share.setWord(word);
+                    HttpSession userInfoSession = request.getSession();
+                    String name = (String) userInfoSession.getAttribute("name");
 
-                share.setMean(mean);
-                share.setCreated_at(currentTime);
-                share.setName("ログイン情報からとってくるユーザー名");
+                    ShareCard share = new ShareCard();
+                    share.setType(type);
+                    share.setWord(word);
+                    share.setMean(mean);
+                    share.setCreated_at(currentTime);
+                    share.setName(name);
 
-                em.persist(share);
+                    em.persist(share);
+                }else {
+                    my.setShare(shareFlag);
+                }
+            }else { //もともと共有していた場合
+                if(request.getParameter("share") != null) { //共有ボタンが押されたら
+                    shareFlag = 1;
+                    my.setShare(shareFlag);
+                }else {
+                    my.setShare(shareFlag);
+
+                    ShareCard share = em.find(ShareCard.class, (Integer)(request.getSession().getAttribute("sharecard_id")));
+                    if(share != null) {
+                        em.getTransaction().begin();
+                        em.remove(share);
+                        em.getTransaction().commit();
+                    }
+                }
             }
 
-         // バリデーションを実行してエラーがあったら新規登録のフォームに戻る
-            List<String> errors = FlashcardValidator.validate(my);
-            if(errors.size() > 0) {
-                em.close();
+            // データベースを更新
+            em.getTransaction().begin();
+            em.getTransaction().commit();
+            request.getSession().setAttribute("flush", "更新が完了しました。");
+            em.close();
 
-                // フォームに初期値を設定、さらにエラーメッセージを送る
-                request.setAttribute("_token", request.getSession().getId());
-                request.setAttribute("mycard", my);
-                request.setAttribute("errors", errors);
+            // セッションスコープ上の不要になったデータを削除
+            request.getSession().removeAttribute("mycard_id");
 
-                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mycard/new.jsp");
-                rd.forward(request, response);
-            } else {
-                // データベースに保存
-                em.persist(my);
-                em.getTransaction().commit();
-                request.getSession().setAttribute("flush", "登録が完了しました。");
-                em.close();
-
-             // セッションスコープ上の不要になったデータを削除
-                request.getSession().removeAttribute("mycard_id");
-             // indexページへリダイレクト
-                response.sendRedirect(request.getContextPath() + "/index");
-            }
+            // indexページへリダイレクト
+            response.sendRedirect(request.getContextPath() + "/index");
         }
     }
 }

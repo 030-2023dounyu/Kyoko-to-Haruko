@@ -44,7 +44,7 @@ h2 {
                                     </div>
                                 </div>
                                 <div class="card-index">${s.count}/${cardCount}</div>
-                                <div class="button-group">
+                                <div class="button-group" style="margin-left: 5%;">
                                     <button
                                         class="button ${mycard.understand == '2' ? 'active' : ''}"
                                         type="button" name="understand" value="2"
