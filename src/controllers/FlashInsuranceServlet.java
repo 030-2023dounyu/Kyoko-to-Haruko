@@ -18,7 +18,7 @@ import utils.DBUtil;
 /**
  * Servlet implementation class FlashcardServlet
  */
-@WebServlet("/flashcardInsurance")
+@WebServlet("/flashInsurance")
 public class FlashInsuranceServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
