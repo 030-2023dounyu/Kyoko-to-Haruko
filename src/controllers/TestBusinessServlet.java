@@ -40,7 +40,7 @@ public class TestBusinessServlet extends HttpServlet {
 
         // リストの要素をランダムに並び替える
         Collections.shuffle(mycard);
-        if (mycard.size() <= 8) {
+        if (mycard.size() < 8) {
             String errorMessage = "登録単語数が不十分です";
             request.setAttribute("errorMessage", errorMessage);
             RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/mycard/testHome.jsp");
