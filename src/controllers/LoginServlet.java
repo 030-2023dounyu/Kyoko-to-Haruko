@@ -56,7 +56,10 @@ public class LoginServlet extends HttpServlet {
 
             if (searchUser.size() == 0 ) {
                 System.out.println("ユーザーID、またはパスワードが違います。");
-                response.sendRedirect(request.getContextPath() + "/login");
+                String errorMessage = "ユーザーID、またはパスワードが違います。";
+                request.setAttribute("errorMessage", errorMessage);
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/user/login.jsp");
+                rd.forward(request, response);
             }else if(searchUser.size() == 1){
 
                 //ログインしたユーザーのloginを更新
@@ -73,13 +76,20 @@ public class LoginServlet extends HttpServlet {
 
                 }else {
                     System.out.println("一致するユーザーIDが見つかりませんでした。");
+                    String errorMessage = "一致するユーザーIDが見つかりませんでした。";
+                    request.setAttribute("errorMessage", errorMessage);
+                    RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/user/login.jsp");
+                    rd.forward(request, response);
                 }
 
                 response.sendRedirect(request.getContextPath() + "/index");
                 System.out.println("ログイン完了");
             }else {
                 System.out.println("エラー：アカウントが複数見つかりました。");
-                response.sendRedirect(request.getContextPath() + "/login");
+                String errorMessage = "エラー：アカウントが複数見つかりました。";
+                request.setAttribute("errorMessage", errorMessage);
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/user/login.jsp");
+                rd.forward(request, response);
             }
 
             em.getTransaction().commit();
