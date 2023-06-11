@@ -12,15 +12,6 @@
 }
 .card-title{
     padding-top:150px;
-    white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-    /*
-    text-align:center;
-    padding-top:150px;
-    max-width: 100%;
-    */
-
 }
 .card_reverse {
     position: absolute;
